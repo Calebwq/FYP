@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>Move and Resize the DIV</title>
+	</head>
+	
+	<link rel="stylesheet" type="text/css" href="divstyle.css"/>
+	<style type="text/css"></style>
+	
+	<body>
+	<script type="text/javascript" src="byrei-dyndiv_1.0rc1.js"></script>
+	<script type= "text/javascript">
+	function resize() {
+		document.getElementById("testdiv").style.resize = "both";
+	}
+	</script>
+	
+	<button onclick="resize()">resize</button>
+	
+		<div id="testdiv" class="dynDiv_moveDiv">
+			<p style="padding: 10px;">This is a Test Div,move and click the resize botton to resize it ;)</p>
+			<div class="dynDiv_resizeDiv_tl"></div>
+			<div class="dynDiv_resizeDiv_tr"></div>
+			<div class="dynDiv_resizeDiv_bl"></div>
+			<div class="dynDiv_resizeDiv_br"></div>
+		</div>
+
+		
+     
+	</body>
+	
+</html>
