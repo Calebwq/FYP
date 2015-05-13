@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> Exercise 1 </title>
+<style>
+#div1 {
+		position:absolute;
+		display:block;
+		height:100px;
+		width:100px;
+		border:1px solid black;
+		text-align:center;
+		}
+</style>
+
+<script>
+
+var posx1;
+var posy1;
+var move = false;
+var posX = 20;
+var posY = 20;
+
+window.onload = init;
+
+function init()
+{
+	var d = document.getElementById('div1');
+	d.onmousedown = mousedown;
+	d.onmouseup = mouseup;
+	d.onmousemove = mousemove;
+	d.style.left = posX + 'px';
+	d.style.top = posY + 'px';
+}
+
+function mousedown(e)
+{
+	move = true;
+	posx1 = e.clientX;
+	posy1 = e.clientY;
+}
+
+function mouseup(e)
+{
+	move = false;
+}
+
+function mousemove(e)
+{
+	if(move)
+	{	
+		posX = posX + e.clientX - posx1;
+		posY = posY + e.clientY - posy1;
+		posx1 = e.clientX;
+		posy1 = e.clientY;
+		var d = document.getElementById('div1');
+		d.style.left = posX + 'px';
+		d.style.top = posY + 'px';
+	}	
+}
+</script>
+</head>
+
+<body>
+
+<div id="div1">
+</div>
+
+</body>
+</html>
