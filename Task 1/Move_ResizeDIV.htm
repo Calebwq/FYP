@@ -2,24 +2,61 @@
 	<head>
 		<title>Move and Resize the DIV</title>
 	</head>
-	
-	<link rel="stylesheet" type="text/css" href="divstyle.css"/>
-	<style type="text/css"></style>
-	
+
 	<body>
 	<script type= "text/javascript">
+
+		var mouseX, mouseY;  
+        var objX, objY;  
+        var isDowm = false;  //click the mouse or not
+        function mouseDown(obj, e) {  
+            obj.style.cursor = "move";  
+            objX = testdiv.style.left;  
+            objY = testdiv.style.top;  
+            mouseX = e.clientX;  
+            mouseY = e.clientY;  
+            isDowm = true;  
+        }  
+        function mouseMove(e) {  
+            var div = document.getElementById("testdiv");  
+            var x = e.clientX;  
+            var y = e.clientY;  
+            if (isDowm) {  
+                div.style.left = parseInt(objX) + parseInt(x) - parseInt(mouseX) + "px";  
+                div.style.top = parseInt(objY) + parseInt(y) - parseInt(mouseY) + "px";  
+                 
+            }  
+        }  
+        function mouseUp(e) {  
+            if (isDowm) {  
+                var x = e.clientX;  
+                var y = e.clientY;  
+                var div = document.getElementById("testdiv");  
+                div.style.left = (parseInt(x) - parseInt(mouseX) + parseInt(objX)) + "px";  
+                div.style.top = (parseInt(y) - parseInt(mouseY) + parseInt(objY)) + "px";  
+                  
+                mouseX = x;  
+                rewmouseY = y;  
+                testdiv.style.cursor = "default";  
+                isDowm = false;  
+            }  
+        } 
+
+	
 	function resize() {
 		document.getElementById("testdiv").style.resize = "both";
 	}
+
 	</script>
 	
 	
 	
-		<div id="testdiv" class="dynDiv_moveDiv">
+		<div id="testdiv" style="width: 200px;height: 150px;background: #ccc;border: 1px solid #aaa;top: 100px;left: 100px;
+		position: absolute;overflow: hidden;" onmousedown="mouseDown(this,event)" onmousemove="mouseMove(event)" onmouseup="mouseUp(event)">
 			<button onclick="resize()">resize</button>
-			<p style="padding: 10px;">This is a Test Div,move and click the resize botton to resize it ;)</p>
+			<p style="padding: 10px;">This is a Test Div,move and resize it by clicking the botton;)</p>
 		</div>
-
+		
 		
      
 	</body>
