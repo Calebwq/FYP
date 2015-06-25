@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title> Forms and Transition </title>
+<style>
+
+.form {
+		display:block;
+		height:500px;
+		width:400px;
+		border:1px solid black;
+		text-align:center;
+		position:fixed;
+		top: 50px;
+	}
+
+#div1 {
+		left: 50px;
+		}
+		
+#div2 {
+		left: 500px;
+		}
+		
+#div3 {
+		left: 950px;
+		}		
+</style>
+
+<script src="jquery-1.11.3.js"></script>
+<script>
+
+$(document).ready(function()
+{
+	$("#div2").hide();
+	$("#div3").hide();
+	$("#div1").submit(function(event)
+	{
+		var x = $("#field1").val();
+		if (x == "1")
+		{
+			$("#div2").show();
+			$("#div1").hide();
+		}
+		else if (x == "2")
+		{
+			$("#div3").show();
+			$("#div1").hide();
+		}		
+		else
+		{
+			alert("1 for Form 2 and 2 for Form 3");
+		}
+		event.preventDefault();
+	});
+	
+	$("#button1").click(function(){
+        $("#div1").show();
+		$("#div2").hide();
+    });
+	$("#button2").click(function(){
+        $("#div3").show();
+		$("#div2").hide();
+    });
+	$("#button3").click(function(){
+        $("#div1").show();
+		$("#div2").show();
+    });
+	$("#reset").click(function(){
+		$("#div1").show();
+		$("#div2").hide();
+		$("#div3").hide();
+	});
+});
+</script>
+
+</head>
+
+<body>
+
+<div id="div1" class="form">
+	<h1> Form 1 </h1>
+	<form name="Form1">
+		<input type="text" id="field1" value="">
+		<input type="submit" value="Submit">
+	</form>
+	<p> "1" for Form 2 and "2" for Form 3 </p>
+</div>
+
+<div id="div2" class="form">
+<h1> Form 2 <h1>
+<button id="button1">Form 1</button>
+<button id="button2">Form 3</button>
+</div>
+
+<div id="div3" class="form">
+<h1> Form 3 <h1>
+<p> Showing form "transition" using show/hide from JQuery </p>
+<button id="button3">Show all</button>
+<button id="reset"> Reset </button>
+</div>
+
+</body>
+
+</html>
